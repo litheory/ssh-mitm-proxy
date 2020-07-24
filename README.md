@@ -122,8 +122,7 @@ If the application knows the fingerprint, then the same host key is used on ever
 ## See also
 
 - [jtesta](https://github.com/jtesta)/**[ssh-mitm](https://github.com/jtesta/ssh-mitm)**
-
 - [manfred-kaiser](https://github.com/manfred-kaiser)/**[ssh-proxy-server](https://github.com/manfred-kaiser/ssh-proxy-server)**
-- [palo alto]()/**[SSH Proxy](https://docs.paloaltonetworks.com/pan-os/9-1/pan-os-admin/decryption/decryption-concepts/ssh-proxy.html)**
-- [checkpoint]()/**[SSH Decryption Opens Door to Very Old Security Vectors](https://blog.checkpoint.com/2015/08/12/ssh-decryption-opens-door-to-very-old-security-vectors/)**
+- [Palo Alto]()/**[SSH Proxy](https://docs.paloaltonetworks.com/pan-os/9-1/pan-os-admin/decryption/decryption-concepts/ssh-proxy.html)**
+- [Checkpoint]()/**[SSH Decryption Opens Door to Very Old Security Vectors](https://blog.checkpoint.com/2015/08/12/ssh-decryption-opens-door-to-very-old-security-vectors/)**
 
