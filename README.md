@@ -63,7 +63,15 @@ gcc *.c -o ssh-proxy -lssh -lpthread
 Start the server:
 
 ```
-./ssh-proxy --rhost 127.0.0.1 --lport 2222
+./ssh-proxy --rhost [remote host] --rport [remote port] --lport [listen port] [Any redundancy char]
+```
+
+**NOTE** the command must follow a redundancy character or string, because of a \<argp.h\> bug.
+
+such as:
+
+```
+./ssh-proxy --rhost 10.100.1.31 1234
 ```
 
 Connect to server:
@@ -77,22 +85,28 @@ ssh -p 2222 user@server
 ```
 Usage: sshd_test [OPTION...]
 ssh-proxy --  an intercepting (mitm) proxy server for security audits.
-
-  -k, --hostkey=FILE         Set a host key. Can be used multiple
-                             times.				default /etc/ssh/ssh_host_ed25519_key
-  -d, --dsakey=FILE          Set the dsa key. 	default /etc/ssh/ssh_dsa_key
-  -e, --ecdsakey=FILE        Set the ecdsa key.	default /etc/ssh/ssh_ecdsa_key
-  -r, --rsakey=FILE          Set the rsa key.	default /etc/ssh/ssh_rsa_key
-  -p, --rport=PORT           Set the proxy destination remote port.defualt 22
-  -l, --lport=PORT           Set the local port to bind.default 2222
   -t, --rhost=HOST           Set the proxy destination remote host
-  -v, --verbosity=VERBOSE    Produce verbose output [0-4].	default 0
+  -p, --rport=PORT           Set the proxy destination remote port.
+                             defualt 22
+  -l, --lport=PORT           Set the local port to bind.
+                             default 2222
+  -v, --verbosity=VERBOSE    Produce verbose output [0-4].	
+                             default 0  
+  -k, --hostkey=FILE         Set a host key. Can be used multiple times.
+  				                   default /etc/ssh/ssh_host_ed25519_key
+  -d, --dsakey=FILE          Set the dsa key. 	
+                             default /etc/ssh/ssh_dsa_key
+  -e, --ecdsakey=FILE        Set the ecdsa key.	
+                             default /etc/ssh/ssh_ecdsa_key
+  -r, --rsakey=FILE          Set the rsa key.	
+                             default /etc/ssh/ssh_rsa_key
+
   -?, --help                 Give this help list
       --usage                Give a short usage message
   -V, --version              Print program version
 ```
 
-##SSH MITM Attacks
+## SSH MITM Attacks
 
 SSH uses trust on first use. This means, that you have to accept the fingerprint if it is not known.
 
