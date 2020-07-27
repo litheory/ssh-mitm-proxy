@@ -53,81 +53,18 @@ const char *argp_program_bug_address = "<dhakkan@foxmail.com>";
 /* Program documentation. */
 static char doc[] = "ssh-proxy --  an intercepting (mitm) proxy server for security audits.";
 /* A description of the arguments we accept. */
-static char args_doc[] = "";
+static char args_doc[] = "RHOST";
 
 /* The options we understand. */
 static struct argp_option options[] = {
-    {
-        .name  = "verbosity",
-        .key   = 'v',
-        .arg   = "VERBOSE",
-        .flags = 0,
-        .doc   = "Produce verbose output [0-4]." 
-                 "default 0",
-        .group = 0
-    },
-    {
-        .name  = "lport",
-        .key   = 'l',
-        .arg   = "PORT",
-        .flags = 0,
-        .doc   = "Set the local port to bind." 
-                 "default 2222",
-        .group = 0
-    },
-    {
-        .name  = "rhost",
-        .key   = 't',
-        .arg   = "HOST",
-        .flags = 0,
-        .doc   = "Set the proxy destination remote host",
-        .group = 0
-    },
-    {
-        .name  = "rport",
-        .key   = 'p',
-        .arg   = "PORT",
-        .flags = 0,
-        .doc   = "Set the proxy destination remote port."
-                 "defualt 22",
-        .group = 0
-    },
-    {
-        .name  = "hostkey",
-        .key   = 'k',
-        .arg   = "FILE",
-        .flags = 0,
-        .doc   = "Set a host key.  Can be used multiple times."
-                 "default /etc/ssh/ssh_host_ed25519_key",
-        .group = 0
-    },
-    {
-        .name  = "dsakey",
-        .key   = 'd',
-        .arg   = "FILE",
-        .flags = 0,
-        .doc   = "Set the dsa key."
-                 "default /etc/ssh/ssh_dsa_key",
-        .group = 0
-    },
-    {
-        .name  = "rsakey",
-        .key   = 'r',
-        .arg   = "FILE",
-        .flags = 0,
-        .doc   = "Set the rsa key."
-                 "default /etc/ssh/ssh_rsa_key",
-        .group = 0
-    },
-    {
-        .name  = "ecdsakey",
-        .key   = 'e',
-        .arg   = "FILE",
-        .flags = 0,
-        .doc   = "Set the ecdsa key."
-                 "default /etc/ssh/ssh_ecdsa_key",
-        .group = 0
-    },
+    {"rhost",   't', "HOST", 0, "Set the proxy destination remote host"},
+    {"rport",   'p', "PROT", 0, "Set the proxy destination remote port.         Default 22" },
+    {"lport",   'l', "PORT", 0, "Set the local port to bind.                    Default 2222" },
+    {"verbose", 'v', "INT",  0, "Produce verbose output [0-4].                  Default 0"},
+    {"hostkey", 'h', "FILE", 0, "Set a host key. Can be used multiple times.    Default /etc/ssh/ssh_host_ed25519_key"},
+    {"rsakey",  'r', "FILE", 0, "Set the rsa key.                               Default /etc/ssh/ssh_rsa_key"},
+    {"dsakey",  'd', "FILE", 0, "Set the dsa key.                               Default /etc/ssh/ssh_dsa_key"},
+    {"ecdsakey",'e', "FILE", 0, "Set the ecdsa key.                             Default /etc/ssh/ssh_ecdsa_key"},
     {0}
 };
 
@@ -175,9 +112,6 @@ static error_t parse_opt (int key, char *arg, struct argp_state *state) {
             args->rhost = arg;
             rhost_set = 1;
             break;
-        case ARGP_KEY_NO_ARGS:
-            printf("[OPTION] ARGP_KEY_NO_ARGS\n");
-            argp_usage(state);
         case ARGP_KEY_ARG:
             /* Here we know that state->arg_num == 0, since we
                 force argument parsing to end before any more arguments can
@@ -195,7 +129,10 @@ static error_t parse_opt (int key, char *arg, struct argp_state *state) {
                 return. */
             args->strings = &state->argv[state->next];
             state->next = state->argc;
-            break;
+            break;        
+        case ARGP_KEY_NO_ARGS:
+            printf("[OPTION] ARGP_KEY_NO_ARGS\n");
+            argp_usage(state);
         case ARGP_KEY_END:
             if (state->arg_num < 1) {
                 /* Not enough arguments. */
