@@ -62,7 +62,8 @@ static struct argp_option options[] = {
         .key   = 'v',
         .arg   = "VERBOSE",
         .flags = 0,
-        .doc   = "Produce verbose output [0-4]",
+        .doc   = "Produce verbose output [0-4]." 
+                 "default 0",
         .group = 0
     },
     {
@@ -70,7 +71,8 @@ static struct argp_option options[] = {
         .key   = 'l',
         .arg   = "PORT",
         .flags = 0,
-        .doc   = "Set the local port to bind",
+        .doc   = "Set the local port to bind." 
+                 "default 2222",
         .group = 0
     },
     {
@@ -86,7 +88,8 @@ static struct argp_option options[] = {
         .key   = 'p',
         .arg   = "PORT",
         .flags = 0,
-        .doc   = "Set the proxy destination remote port",
+        .doc   = "Set the proxy destination remote port."
+                 "defualt 22",
         .group = 0
     },
     {
@@ -94,8 +97,8 @@ static struct argp_option options[] = {
         .key   = 'k',
         .arg   = "FILE",
         .flags = 0,
-        .doc   = "Set a host key.  Can be used multiple times.  "
-                 "Implies no default keys.",
+        .doc   = "Set a host key.  Can be used multiple times."
+                 "default /etc/ssh/ssh_host_ed25519_key",
         .group = 0
     },
     {
@@ -103,7 +106,8 @@ static struct argp_option options[] = {
         .key   = 'd',
         .arg   = "FILE",
         .flags = 0,
-        .doc   = "Set the dsa key.",
+        .doc   = "Set the dsa key."
+                 "default /etc/ssh/ssh_dsa_key",
         .group = 0
     },
     {
@@ -111,7 +115,8 @@ static struct argp_option options[] = {
         .key   = 'r',
         .arg   = "FILE",
         .flags = 0,
-        .doc   = "Set the rsa key.",
+        .doc   = "Set the rsa key."
+                 "default /etc/ssh/ssh_rsa_key",
         .group = 0
     },
     {
@@ -119,7 +124,8 @@ static struct argp_option options[] = {
         .key   = 'e',
         .arg   = "FILE",
         .flags = 0,
-        .doc   = "Set the ecdsa key.",
+        .doc   = "Set the ecdsa key."
+                 "default /etc/ssh/ssh_ecdsa_key",
         .group = 0
     },
     {0}
