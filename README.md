@@ -58,7 +58,7 @@ gcc *.c -o ssh-proxy -lssh -lpthread
 
 ## Start Proxy Server
 
-### Password authentication
+### usage
 
 Start the server:
 
@@ -72,7 +72,27 @@ Connect to server:
 ssh -p 2222 user@server
 ```
 
-## SSH MITM Attacks
+### help
+
+```
+Usage: sshd_test [OPTION...]
+ssh-proxy --  an intercepting (mitm) proxy server for security audits.
+
+  -k, --hostkey=FILE         Set a host key. Can be used multiple
+                             times.				default /etc/ssh/ssh_host_ed25519_key
+  -d, --dsakey=FILE          Set the dsa key. 	default /etc/ssh/ssh_dsa_key
+  -e, --ecdsakey=FILE        Set the ecdsa key.	default /etc/ssh/ssh_ecdsa_key
+  -r, --rsakey=FILE          Set the rsa key.	default /etc/ssh/ssh_rsa_key
+  -p, --rport=PORT           Set the proxy destination remote port.defualt 22
+  -l, --lport=PORT           Set the local port to bind.default 2222
+  -t, --rhost=HOST           Set the proxy destination remote host
+  -v, --verbosity=VERBOSE    Produce verbose output [0-4].	default 0
+  -?, --help                 Give this help list
+      --usage                Give a short usage message
+  -V, --version              Print program version
+```
+
+##SSH MITM Attacks
 
 SSH uses trust on first use. This means, that you have to accept the fingerprint if it is not known.
 
