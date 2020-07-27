@@ -71,7 +71,8 @@ Start the server:
 such as:
 
 ```
-./ssh-proxy --rhost 10.100.1.31 1234
+./ssh-proxy --rhost 10.100.1.31 1234sadas
+./ssh-proxy --rhost 10.100.1.31 --lport 2222 djaiohj1
 ```
 
 Connect to server:
