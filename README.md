@@ -86,6 +86,17 @@ ssh -p 2222 user@server
 ```
 Usage: sshd_test [OPTION...]
 ssh-proxy --  an intercepting (mitm) proxy server for security audits.
+<<<<<<< HEAD
+=======
+
+  -k, --hostkey=FILE         Set a host key. Can be used multiple
+                             times.				      default /etc/ssh/ssh_host_ed25519_key
+  -d, --dsakey=FILE          Set the dsa key. 	default /etc/ssh/ssh_dsa_key
+  -e, --ecdsakey=FILE        Set the ecdsa key.	default /etc/ssh/ssh_ecdsa_key
+  -r, --rsakey=FILE          Set the rsa key.	  default /etc/ssh/ssh_rsa_key
+  -p, --rport=PORT           Set the proxy destination remote port.defualt 22
+  -l, --lport=PORT           Set the local port to bind.default 2222
+>>>>>>> cab47721b710bc6c5449edb2e8393458f0d5e983
   -t, --rhost=HOST           Set the proxy destination remote host
   -p, --rport=PORT           Set the proxy destination remote port.
                              defualt 22
