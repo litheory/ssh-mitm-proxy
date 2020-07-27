@@ -38,7 +38,7 @@ The proxy server side use approach of “One to rule them all” (A single Finge
 
 ## Initial Setup
 
-### Download
+**Download**
 
 ```
 https://github.com/p0st3r/ssh-proxy.git
