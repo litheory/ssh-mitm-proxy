@@ -66,7 +66,7 @@ Start the server:
 ./ssh-proxy --rhost [remote host] --rport [remote port] --lport [listen port] [Any redundancy char]
 ```
 
-**NOTE** the command must follow a redundancy character or string, because of a \<argp.h\> bug.
+**NOTE** To start ssh-proxy, the command line must follows a redundancy character or string in the end because of a \<argp.h\> bug.
 
 such as:
 
