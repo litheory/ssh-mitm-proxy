@@ -92,7 +92,7 @@ ssh-proxy --  an intercepting (mitm) proxy server for security audits.
   -V, --version              Print program version
 ```
 
-##SSH MITM Attacks
+## SSH MITM Attacks
 
 SSH uses trust on first use. This means, that you have to accept the fingerprint if it is not known.
 
