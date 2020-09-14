@@ -16,7 +16,11 @@
 
 `ssh-proxy` is an intercepting (mitm) proxy server for security audits.
 
-`ssh-proxy` allows an auditor to intercept SSH connections. Based on libssh, it act as a proxy between the victim SSH CLIENT and their intended SSH SERVER, the proxy server side intercept all plaintext passwords and sessions, and forwarded these to intended SERVER by client side.
+`ssh-proxy` provides the capability for the firewall to decrypt inbound and outbound SSH connections passing through the firewall, in order to ensure that SSH is not being used to tunnel unwanted applications and content.
+
+In an `ssh-proxy` configuration, the firewall resides between a client and a server. When the client sends an SSH request to the server, the firewall intercepts the request and forwards the SSH request to the server. SSH decryption does not require any certificates, and the session-key used for inbound decryption is negotiated when the MiTM server received connection request from Original client, and MiTM client request connecting to Original server at once and negotiation another session-key for outbound decryption.
+
+The firewall then intercepts the server response and forwards the response to the client, establishing an SSH tunnel between the firewall and the client and an SSH tunnel between the firewall and the server, with firewall functioning as a proxy. As traffic flows between the client and the server, the firewall is able to distinguish whether the SSH traffic is being routed normally or if it is using SSH tunneling (port forwarding). Content and threat inspections are not performed on SSH tunnels; however, if SSH tunnels are identified by the firewall, the SSH tunneled traffic is blocked and restricted according to configured security policies.
 
 Of course, the victim's SSH CLIENT will complain that the server's key has changed. But because 99.99999% of the time this is caused by a legitimate action (OS re-install, configuration change, etc), many/most users will disregard the warning and continue on. 
 
